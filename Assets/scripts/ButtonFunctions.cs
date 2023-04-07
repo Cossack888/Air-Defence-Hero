@@ -9,9 +9,6 @@ public class ButtonFunctions : MonoBehaviour
     [SerializeField] GameObject gunActivator;
     [SerializeField] GameObject GameOverMenu;
     [SerializeField] GameObject pauseMenu;
-
-
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -19,33 +16,24 @@ public class ButtonFunctions : MonoBehaviour
             PauseGame();
         }
     }
-
-
     public void PauseGame()
     {
         turrets = GameObject.FindGameObjectsWithTag("turret");
-
         foreach (GameObject turret in turrets)
         {
             turret.SetActive(false);
-
         }
-
         gunActivator.SetActive(false);
-
         if (!GameOverMenu.activeSelf)
         {
             pauseMenu.SetActive(true);
         }
         Time.timeScale = 0f;
-
     }
- 
     public void ActivateGameOverMenu()
     {
         GameOverMenu.SetActive(true);
     }
-
     public void ResumeGame()
     {
         turrets = GameObject.FindGameObjectsWithTag("turret");
@@ -56,9 +44,7 @@ public class ButtonFunctions : MonoBehaviour
         pauseMenu.SetActive(false);
         gunActivator.SetActive(true);
         Time.timeScale = 1f;
-
     }
-
     public void EndGame()
     {
         Application.Quit();

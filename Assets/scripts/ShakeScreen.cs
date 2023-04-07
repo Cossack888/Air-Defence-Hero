@@ -21,7 +21,6 @@ public class ShakeScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
         initialCameraPosition = Camera.main.transform.localPosition;
         cityLocationCount = FindObjectOfType<GameManager>().startingCityPoints;
     }
@@ -39,37 +38,24 @@ public class ShakeScreen : MonoBehaviour
     }
     private void Update()
     {
-       
-
-
         if (isShaking)
         {
             if (shakeDuration > 0)
             {
                 Camera.main.transform.localPosition += Random.insideUnitSphere * shakeAmmount;
-
                 shakeDuration -= Time.deltaTime * decreaseFactor;
-
             }
         }
     }
-
-
-
-
-
-    public void Shake(int cityLocationsRemaining)
+    void Shake(int cityLocationsRemaining)
     {
         if(cityLocationsRemaining< cityLocationCount)
         {
             isShaking = true;
             StartCoroutine(Shaking());
             cityLocationCount--;
-        }
-        
-        
+        } 
     }
-
     IEnumerator Shaking()
     {
         yield return new WaitForSeconds(0.5f);

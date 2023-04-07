@@ -5,11 +5,11 @@ using UnityEngine;
 public class TargetingSystem : MonoBehaviour
 {
     float timer;
-    public float delay;
+    [SerializeField] float delay;
     public Vector3 target;
-    public GameObject[] CityPoints;
+    GameObject[] CityPoints;
     List<Transform> CityLocations;
-    public bool gameFinished;
+    bool gameFinished;
 
     void Start()
     {
@@ -29,17 +29,14 @@ public class TargetingSystem : MonoBehaviour
         timer = timer + Time.deltaTime;
         if (timer > delay&&!gameFinished)
         {
-         
             ChooseTarget();
             timer = 0;
             
         }
-
     }
 
-    public void ChooseTarget()
+    void ChooseTarget()
     {
-
         if (CityLocations.Count  > 1)
         {
             target = CityLocations[Random.Range(0, CityLocations.Count - 1)].position;
@@ -54,13 +51,15 @@ public class TargetingSystem : MonoBehaviour
         }
     }
 
-    public void RemoveTarget()
+    void RemoveTarget()
     {
         for (var i = CityLocations.Count - 1; i > -1; i--)
         {
             if (CityLocations[i] == null)
+            {
                 CityLocations.RemoveAt(i);
+                ChooseTarget();
+            }  
         }
     }
-
 }

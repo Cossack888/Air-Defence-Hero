@@ -5,12 +5,12 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     public static ObjectPool SharedInstance;
-    public List<GameObject> missiles;
-    public List<GameObject> planes;
-    public List<GameObject> plasmaBullets;
-    public GameObject missile;
-    public GameObject plane;
-    public GameObject plasmaBullet;
+    List<GameObject> missiles;
+    List<GameObject> planes;
+    List<GameObject> plasmaBullets;
+    [SerializeField]GameObject missile;
+    [SerializeField] GameObject plane;
+    [SerializeField] GameObject plasmaBullet;
 
     public int amountToPool;
 
