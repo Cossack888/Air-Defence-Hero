@@ -5,7 +5,6 @@ using Cinemachine;
 
 public class ShakeScreen : MonoBehaviour
 {
-
     public int cityLocationCount;
     [SerializeField]
     float shakeDuration = 0.5f;
@@ -16,9 +15,6 @@ public class ShakeScreen : MonoBehaviour
     [SerializeField]
     float decreaseFactor = 1.0f;
     Vector3 initialCameraPosition;
-    
-    
-    // Start is called before the first frame update
     void Start()
     {
         initialCameraPosition = Camera.main.transform.localPosition;
@@ -26,15 +22,14 @@ public class ShakeScreen : MonoBehaviour
     }
     private void OnEnable()
     {
-        FindObjectOfType<GameManager>().cityPointsRemaining += Shake;
+        FindObjectOfType<GameManager>().CityPointsRemaining += Shake;
     }
     private void OnDisable()
     {
         if (FindObjectOfType<GameManager>() != null)
         {
-            FindObjectOfType<GameManager>().cityPointsRemaining -= Shake;
+            FindObjectOfType<GameManager>().CityPointsRemaining -= Shake;
         }
-
     }
     private void Update()
     {

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,13 +10,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] float levelAdvancementPoints = 20;
     GameObject[] CityPoints;
     PointCount counter;
+    [SerializeField] Text levelIndicator;
     int level;
     public int startingCityPoints;
     float timer = 0;
     public delegate void OnGameStateChange(int number);
-    public event OnGameStateChange advanceLevel;
-    public event OnGameStateChange cityPointsRemaining;
-
+    public event OnGameStateChange AdvanceLevel;
+    public event OnGameStateChange CityPointsRemaining;
     private void Start()
     {
         CityPoints = GameObject.FindGameObjectsWithTag("Target");
@@ -29,18 +30,18 @@ public class GameManager : MonoBehaviour
     {
         if (counter.pointsCount > levelAdvancementPoints)
         {
-            AdvanceLevel();
+            LevelUp();
         }
         CityPoints = GameObject.FindGameObjectsWithTag("Target");
         if (CityPoints.Length < startingCityPoints)
         {
             startingCityPoints--;
-            cityPointsRemaining.Invoke(CityPoints.Length);
+            CityPointsRemaining.Invoke(CityPoints.Length);
         }
         if (CityPoints.Length == 0)
         {
             timer += Time.deltaTime;
-            cityPointsRemaining.Invoke(CityPoints.Length);
+            CityPointsRemaining.Invoke(CityPoints.Length);
             gameManagementFunctions.ActivateGameOverMenu();
             if (timer > 5)
             {
@@ -48,11 +49,12 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    void AdvanceLevel()
+    void LevelUp()
     {
         gameManagementFunctions.PauseGame();
         level++;
-        advanceLevel.Invoke(level);
+        levelIndicator.text = "Level "+level.ToString();
+        AdvanceLevel.Invoke(level);
         levelAdvancementPoints += levelAdvancementPoints * 1.5f;
         AddPointsForCityLocations();
     }

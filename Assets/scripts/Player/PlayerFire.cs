@@ -7,16 +7,15 @@ public class PlayerFire : MonoBehaviour
 {   
     public int ammoCount;
     [SerializeField]Text ammoDisplay;
-
     private void Start()
     {
         ammoCount = 40;
     }
     void Update()
     {
-        shoot();  
+        Shoot();  
     }
-    void shoot()
+    void Shoot()
     {
         if (Input.GetMouseButtonDown(0))
         {           
@@ -29,7 +28,6 @@ public class PlayerFire : MonoBehaviour
             else { ammoDisplay.text = "Empty"; }
         }
     }
-
     void GetBulletFromPool()
     {
         GameObject bullet = ObjectPool.SharedInstance.GetPooledBullet();
@@ -38,12 +36,10 @@ public class PlayerFire : MonoBehaviour
             bullet.transform.position = transform.position;
             bullet.transform.rotation = transform.rotation;
             bullet.SetActive(true);
-           PlasmaTrajectory trajectory =  bullet.GetComponent<PlasmaTrajectory>() ;
+            PlasmaTrajectory trajectory =  bullet.GetComponent<PlasmaTrajectory>() ;
             trajectory.BulletTrajectory();
             PlasmaShot shot = bullet.GetComponent<PlasmaShot>();
             shot.gun = gameObject;
         }
     }
-
-
 }

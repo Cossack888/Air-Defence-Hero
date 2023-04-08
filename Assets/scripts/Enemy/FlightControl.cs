@@ -12,16 +12,15 @@ public class FlightControl : MonoBehaviour
     public bool m_FacingRight;
     Bombing bomb;
     [SerializeField] Vector2 FinalDestination;
-     
     private void OnEnable()
     {
-        FindObjectOfType<GameManager>().advanceLevel += SetSpeed;
+        FindObjectOfType<GameManager>().AdvanceLevel += SetSpeed;
     }
     private void OnDisable()
     {
         if (FindObjectOfType<GameManager>() != null)
         {
-            FindObjectOfType<GameManager>().advanceLevel -= SetSpeed;
+            FindObjectOfType<GameManager>().AdvanceLevel -= SetSpeed;
         }       
     }
 
@@ -38,7 +37,7 @@ public class FlightControl : MonoBehaviour
         MovementAfterBomb();
         course = new Vector3(xPosition, yPosition);
         float step = speed * Time.deltaTime;
-       transform.position = Vector3.MoveTowards(transform.position, course, step);  
+        transform.position = Vector3.MoveTowards(transform.position, course, step);  
     }
     void MovementAfterBomb()
     {
@@ -62,5 +61,4 @@ public class FlightControl : MonoBehaviour
     {      
         speed = 10+level*2;
     }
-
 }

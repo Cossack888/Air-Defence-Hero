@@ -26,19 +26,16 @@ public class FaceChanger : MonoBehaviour
     Dictionary<int, Sprite> moodSpriteMap = new Dictionary<int, Sprite>();
     private void OnEnable()
     {
-
-        FindObjectOfType<GameManager>().cityPointsRemaining += CityDestroyed;
-        FindObjectOfType<GameManager>().advanceLevel += GameAdvancement;
+        FindObjectOfType<GameManager>().CityPointsRemaining += CityDestroyed;
+        FindObjectOfType<GameManager>().AdvanceLevel += GameAdvancement;
     }
     private void OnDisable()
     {
         if (FindObjectOfType<GameManager>() != null)
         {
-
-            FindObjectOfType<GameManager>().cityPointsRemaining -= CityDestroyed;
-            FindObjectOfType<GameManager>().advanceLevel -= GameAdvancement;
+            FindObjectOfType<GameManager>().CityPointsRemaining -= CityDestroyed;
+            FindObjectOfType<GameManager>().AdvanceLevel -= GameAdvancement;
         }
-
     }
     private void InitializeSpriteMap()
     {
@@ -59,7 +56,6 @@ public class FaceChanger : MonoBehaviour
         moodSpriteMap[15] = happy;
         moodSpriteMap[16] = happy2;
         moodSpriteMap[17] = inLove;
-
     }
     private void Start()
     {
@@ -119,7 +115,6 @@ public class FaceChanger : MonoBehaviour
     {
         this.soldierMood = soldierMood;
         RefreshSoldierSprite();
-
     }
 }
         

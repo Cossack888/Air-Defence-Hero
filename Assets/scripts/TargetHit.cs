@@ -27,6 +27,5 @@ public class TargetHit : MonoBehaviour
     void TakeDamage(int dmg)
     {
         health -= dmg;   
-    }
-  
+    } 
 }

@@ -12,13 +12,13 @@ public class GameState : MonoBehaviour
     }
     private void OnEnable()
     {
-        FindObjectOfType<GameManager>().advanceLevel += AdjustDifficulty;  
+        FindObjectOfType<GameManager>().AdvanceLevel += AdjustDifficulty;  
     }
     private void OnDisable()
     {
         if (FindObjectOfType<GameManager>()!=null)
         {
-            FindObjectOfType<GameManager>().advanceLevel -= AdjustDifficulty;   
+            FindObjectOfType<GameManager>().AdvanceLevel -= AdjustDifficulty;   
         }    
     }
     private void Update()
@@ -43,10 +43,6 @@ public class GameState : MonoBehaviour
             State = 3;
         }
     }
-
-
-
-
 }
    
 

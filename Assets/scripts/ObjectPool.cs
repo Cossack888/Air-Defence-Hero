@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,17 +7,14 @@ public class ObjectPool : MonoBehaviour
     List<GameObject> missiles;
     List<GameObject> planes;
     List<GameObject> plasmaBullets;
-    [SerializeField]GameObject missile;
+    [SerializeField] GameObject missile;
     [SerializeField] GameObject plane;
     [SerializeField] GameObject plasmaBullet;
-
     public int amountToPool;
-
     void Awake()
     {
         SharedInstance = this;
     }
-
     void Start()
     {
         missiles = new List<GameObject>();
@@ -46,7 +42,6 @@ public class ObjectPool : MonoBehaviour
             plasmaBullets.Add(tmp2);
         }
     }
-
     public GameObject GetPooledMissile()
     {
         for (int i = 0; i < amountToPool; i++)
@@ -80,7 +75,4 @@ public class ObjectPool : MonoBehaviour
         }
         return null;
     }
-
-
-
 }

@@ -48,7 +48,6 @@ public class ActivateGun : MonoBehaviour
         foreach (Gun gun in guns)
         {
             bool activated = gun.UpdateActivationState(hasActiveGun);
-
             if (activated)
             {
                 hasActiveGun = true;

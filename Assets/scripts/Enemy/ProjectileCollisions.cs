@@ -27,5 +27,4 @@ public class ProjectileCollisions : MonoBehaviour
             projectile.SetActive(false);
         }
     }
-    
 }

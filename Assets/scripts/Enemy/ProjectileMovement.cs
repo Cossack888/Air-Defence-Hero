@@ -17,17 +17,18 @@ public class ProjectileMovement : MonoBehaviour
     }
     private void OnEnable()
     {
-        FindObjectOfType<GameManager>().advanceLevel += SetSpeed;
+        FindObjectOfType<GameManager>().AdvanceLevel += SetSpeed;
     }
     private void OnDisable()
     {
-       if (FindObjectOfType<GameManager>() != null){
-            FindObjectOfType<GameManager>().advanceLevel -= SetSpeed;
-        }
+       if (FindObjectOfType<GameManager>() != null)
+       {
+            FindObjectOfType<GameManager>().AdvanceLevel -= SetSpeed;
+       }
     }
     private void FixedUpdate()
     {
-            Rotation();
+        Rotation();
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, aim, step);
         if (transform.position == aim)
@@ -50,8 +51,6 @@ public class ProjectileMovement : MonoBehaviour
     }
     public void SetSpeed(int level)
     {
-        
-        speed = 5+level*2;
+        speed = 5 + level * 2;
     }
-
 }

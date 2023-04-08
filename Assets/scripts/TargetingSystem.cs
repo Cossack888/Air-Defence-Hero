@@ -10,7 +10,6 @@ public class TargetingSystem : MonoBehaviour
     GameObject[] CityPoints;
     List<Transform> CityLocations;
     bool gameFinished;
-
     void Start()
     {
         CityLocations = new List<Transform>();
@@ -20,21 +19,17 @@ public class TargetingSystem : MonoBehaviour
             CityLocations.Add(CityPoint.transform);
         }
         ChooseTarget();
-        
     }
-
     void Update()
     {
         RemoveTarget();
-        timer = timer + Time.deltaTime;
+        timer += Time.deltaTime;
         if (timer > delay&&!gameFinished)
         {
             ChooseTarget();
             timer = 0;
-            
         }
     }
-
     void ChooseTarget()
     {
         if (CityLocations.Count  > 1)
@@ -50,7 +45,6 @@ public class TargetingSystem : MonoBehaviour
             gameFinished = true;
         }
     }
-
     void RemoveTarget()
     {
         for (var i = CityLocations.Count - 1; i > -1; i--)

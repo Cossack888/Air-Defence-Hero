@@ -27,7 +27,6 @@ public class Spawner : MonoBehaviour
             timer = 0;
         }
     }
-
     void GetFromPool(int xPos, int yPos)
     {
         try
@@ -61,8 +60,5 @@ public class Spawner : MonoBehaviour
         {
             Debug.Log("Error:Wrong Pool");
         }  
-    }
-
-    
-   
+    } 
 }
