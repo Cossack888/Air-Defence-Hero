@@ -22,6 +22,7 @@ public class TargetingSystem : MonoBehaviour
     }
     void Update()
     {
+
         RemoveTarget();
         timer += Time.deltaTime;
         if (timer > delay&&!gameFinished)
